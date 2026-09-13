@@ -424,6 +424,7 @@ body::after {
   opacity: 0;
   animation: heroFadeUp 1.2s var(--ease-out-expo) 1.4s forwards;
 }
+.hero-proof[hidden] { display: none; }
 .hero-proof-item { text-align: left; }
 .hero-proof-value {
   display: block;
@@ -1239,10 +1240,11 @@ section { position: relative; }
     <h1 class="hero-title"><img class="hero-logo" src="images/logo-landscape-white.png" alt="Amara Global — Shaping Values, Building Legacies"></h1>
     <p class="hero-tagline">Integrated Energy · Mining · Commodities Trading</p>
     <div class="hero-actions">
-      <a class="hero-action primary" href="#refinery">Explore operations <span aria-hidden="true">↗</span></a>
-      <a class="hero-action" href="#contact">Partner with us</a>
+      <a class="hero-action primary" href="#mining">Mining</a>
+      <a class="hero-action" href="#refinery">Refinery</a>
+      <a class="hero-action" href="#commodities">Trading</a>
     </div>
-    <div class="hero-proof" aria-label="Amara Global key figures">
+    <div class="hero-proof" aria-label="Amara Global key figures" hidden>
       <div class="hero-proof-item"><span class="hero-proof-value">2,500</span><span class="hero-proof-label">Acres in Zambia</span></div>
       <div class="hero-proof-item"><span class="hero-proof-value">100 KG</span><span class="hero-proof-label">Daily refinery capacity</span></div>
       <div class="hero-proof-item"><span class="hero-proof-value">2.4 T</span><span class="hero-proof-label">Annual Dubai pipeline</span></div>
