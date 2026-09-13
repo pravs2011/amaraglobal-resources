@@ -1,0 +1,1717 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amara Global Resources — Shaping Values, Building Legacies</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>♾️</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<style>
+/* ═══════════════════════════════════════════════════════
+   AMARA GLOBAL — AWWWARDS-TIER DESIGN
+   Vibe: Editorial Luxury × Gold Mining Powerhouse
+   Layout: Z-Axis Cascade + Editorial Split
+   ═══════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --gold: #C5A55A;
+  --gold-light: #D4A84B;
+  --gold-bright: #E8C95A;
+  --gold-dim: #8B7340;
+  --black: #0a0a0a;
+  --black-deep: #050505;
+  --white: #F5F0E8;
+  --white-muted: #A09882;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --sans: 'Outfit', system-ui, sans-serif;
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-soft: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--black-deep);
+  color: var(--white);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+/* ─── POLISH TOKENS & ACCESSIBILITY ─── */
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 4px;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ─── GRAIN OVERLAY (fixed, pointer-events-none) ─── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* ─── CUSTOM SCROLLBAR ─── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black-deep); }
+::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 3px; }
+
+/* ─── SELECTION ─── */
+::selection { background: var(--gold); color: var(--black); }
+
+/* ─── LOADING SCREEN ─── */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--black-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s var(--ease-out-expo), visibility 0.8s;
+}
+.loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-logo {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: 0.15em;
+  animation: loaderPulse 1.8s var(--ease-out-soft) infinite;
+}
+.loader-bar {
+  width: 120px;
+  height: 1px;
+  background: rgba(197,165,90,0.2);
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+.loader-bar::after {
+  content: '';
+  position: absolute;
+  left: -100%;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gold);
+  animation: loaderSlide 1.4s var(--ease-out-expo) infinite;
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+@keyframes loaderSlide {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* ─── FLOATING NAV (glass pill) ─── */
+.nav {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 0.75rem 2rem;
+  background: rgba(10,10,10,0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(197,165,90,0.12);
+  border-radius: 999px;
+  transition: all 0.6s var(--ease-out-soft);
+}
+.nav.scrolled {
+  background: rgba(5,5,5,0.85);
+  border-color: rgba(197,165,90,0.2);
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.nav-links {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  text-decoration: none;
+  transition: color 0.4s var(--ease-out-soft);
+  white-space: nowrap;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  font-size: 0.7rem !important;
+  font-weight: 500 !important;
+  color: var(--gold) !important;
+  padding: 0.45rem 1.2rem;
+  border: 1px solid rgba(197,165,90,0.3);
+  border-radius: 999px;
+  transition: all 0.4s var(--ease-out-soft) !important;
+}
+.nav-cta:hover {
+  background: var(--gold) !important;
+  color: var(--black) !important;
+}
+
+.nav::after {
+  content: 'LONDON · DUBAI · LUSAKA';
+  position: absolute;
+  top: calc(100% + 0.65rem);
+  right: 1.5rem;
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  color: rgba(245, 240, 232, 0.42);
+  white-space: nowrap;
+}
+
+/* ─── HAMBURGER ─── */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 102;
+  padding: 8px;
+}
+.hamburger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: all 0.4s var(--ease-out-soft);
+  transform-origin: center;
+}
+.hamburger.active span:first-child { transform: rotate(45deg) translate(4.5px, 4.5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.hamburger.active span:last-child { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+/* ─── MOBILE OVERLAY ─── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 99;
+  background: rgba(5,5,5,0.95);
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s var(--ease-out-soft);
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--serif);
+  font-size: 2.5rem;
+  color: var(--white-muted);
+  text-decoration: none;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.5s var(--ease-out-soft);
+}
+.mobile-menu.open a { transform: translateY(0); opacity: 1; }
+.mobile-menu a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu a:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu a:nth-child(5) { transition-delay: 0.3s; }
+.mobile-menu a:nth-child(6) { transition-delay: 0.35s; }
+.mobile-menu a:nth-child(7) { transition-delay: 0.4s; }
+.mobile-menu a:hover { color: var(--gold); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px) blur(4px);
+  transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo), filter 0.9s var(--ease-out-expo);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0) blur(0);
+}
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── HERO ─── */
+.hero {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 7rem 2rem 5rem;
+}
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5,5,5,0.98) 0%, rgba(5,5,5,0.78) 42%, rgba(5,5,5,0.18) 100%),
+    url('assets/generated/amara-hero-refinery.png') center / cover no-repeat,
+    radial-gradient(ellipse 60% 50% at 50% 40%, rgba(197,165,90,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 28% 70% at 85% 50%, rgba(197,165,90,0.08) 0%, transparent 72%),
+    linear-gradient(110deg, rgba(5,5,5,1) 0%, rgba(13,12,10,0.96) 56%, rgba(5,5,5,1) 100%);
+}
+.hero-particles {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0;
+  animation: particleFloat 8s infinite;
+}
+@keyframes particleFloat {
+  0% { opacity: 0; transform: translateY(100vh) scale(0); }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { opacity: 0; transform: translateY(-20vh) scale(1); }
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 980px;
+}
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: heroFadeUp 1s var(--ease-out-expo) 0.5s forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim));
+}
+.hero-eyebrow::after { background: linear-gradient(90deg, var(--gold-dim), transparent); }
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 10vw, 9rem);
+  font-weight: 300;
+  line-height: 0.9;
+  color: var(--white);
+  letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 0.7s forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+.hero-subtitle {
+  font-family: var(--serif);
+  font-size: clamp(1rem, 2.5vw, 1.6rem);
+  font-weight: 300;
+  color: var(--white-muted);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 0.9s forwards;
+}
+.hero-tagline {
+  font-size: 0.8rem;
+  font-weight: 300;
+  color: var(--white-muted);
+  letter-spacing: 0.08em;
+  margin-top: 2.5rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 1.1s forwards;
+}
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 1.25s forwards;
+}
+.hero-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(197,165,90,0.48);
+  border-radius: 999px;
+  color: var(--gold-light);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: transform 0.35s var(--ease-out-soft), background 0.35s var(--ease-out-soft), color 0.35s var(--ease-out-soft), border-color 0.35s var(--ease-out-soft);
+}
+.hero-action.primary { background: var(--gold); color: var(--black); border-color: var(--gold); }
+.hero-action:hover { transform: translateY(-2px); border-color: var(--gold-bright); }
+.hero-action.primary:hover { background: var(--gold-bright); color: var(--black); }
+.hero-proof {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3.5rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 1.4s forwards;
+}
+.hero-proof-item { text-align: left; }
+.hero-proof-value {
+  display: block;
+  font-family: var(--serif);
+  color: var(--gold);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+.hero-proof-label {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--white-muted);
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+.hero-scroll {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 1.5s forwards;
+}
+.hero-scroll span {
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.hero-scroll-line {
+  width: 1px;
+  height: 50px;
+  background: linear-gradient(to bottom, var(--gold-dim), transparent);
+  animation: scrollPulse 2s var(--ease-out-soft) infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION COMMON ─── */
+section { position: relative; }
+.section-pad { padding: 8rem 2rem; }
+.section-pad-lg { padding: 10rem 2rem; }
+
+/* ─── INFINITY DIVIDER ─── */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 4rem 0;
+}
+.divider-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+}
+.divider-icon {
+  font-size: 1.2rem;
+  color: var(--gold-dim);
+  animation: dividerSpin 12s linear infinite;
+}
+@keyframes dividerSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* ─── EYEBROW BADGE ─── */
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.6rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  padding: 0.4rem 1rem;
+  border: 1px solid rgba(197,165,90,0.2);
+  border-radius: 999px;
+  margin-bottom: 1.5rem;
+}
+
+/* ─── ABOUT SECTION ─── */
+.about {
+  background: var(--black-deep);
+  position: relative;
+}
+.about-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.about-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+.about-text h2 em { color: var(--gold); font-style: italic; }
+.about-text p {
+  font-size: 0.95rem;
+  color: var(--white-muted);
+  line-height: 1.8;
+  margin-bottom: 1.2rem;
+}
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+.stat {
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(197,165,90,0.15);
+}
+.stat-number {
+  font-family: var(--serif);
+  font-size: 2.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.stat-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white-muted);
+  margin-top: 0.5rem;
+}
+.about-image {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out-soft);
+}
+.about-image:hover img { transform: scale(1.05); }
+.about-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(5,5,5,0.6) 100%);
+}
+.about-image-badge {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 2;
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--gold);
+  letter-spacing: 0.05em;
+}
+
+/* ─── COMMODITIES ─── */
+.commodities {
+  background: linear-gradient(180deg, var(--black-deep) 0%, #0d0b08 50%, var(--black-deep) 100%);
+}
+.commodities-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+.commodities-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.commodities-header h2 em { color: var(--gold); font-style: italic; }
+.commodities-header p {
+  font-size: 0.9rem;
+  color: var(--white-muted);
+  line-height: 1.7;
+}
+.commodities-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.commodity-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  cursor: pointer;
+  group: true;
+}
+.commodity-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out-soft);
+}
+.commodity-card:hover img { transform: scale(1.08); }
+.commodity-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 30%, rgba(5,5,5,0.85) 100%);
+  z-index: 1;
+  transition: opacity 0.6s var(--ease-out-soft);
+}
+.commodity-card:hover::before {
+  background: linear-gradient(180deg, transparent 20%, rgba(5,5,5,0.9) 100%);
+}
+.commodity-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 2rem;
+  transform: translateY(10px);
+  transition: transform 0.6s var(--ease-out-soft);
+}
+.commodity-card:hover .commodity-content { transform: translateY(0); }
+.commodity-name {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 400;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.commodity-tag {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.commodity-desc {
+  font-size: 0.8rem;
+  color: var(--white-muted);
+  margin-top: 0.8rem;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.6s var(--ease-out-soft) 0.1s;
+}
+.commodity-card:hover .commodity-desc { opacity: 1; transform: translateY(0); }
+
+/* ─── BUSINESS MODEL ─── */
+.business-model {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.business-model::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5,5,5,0.96) 0%, rgba(5,5,5,0.8) 48%, rgba(5,5,5,0.35) 100%), url('assets/generated/amara-value-chain.png') center / cover no-repeat;
+  opacity: 0.72;
+  pointer-events: none;
+}
+.business-model-header, .business-model .steps {
+  position: relative;
+  z-index: 1;
+}
+.business-model-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+.business-model-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.business-model-header h2 em { color: var(--gold); font-style: italic; }
+.steps {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.step {
+  position: relative;
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  background: rgba(197,165,90,0.03);
+  border: 1px solid rgba(197,165,90,0.08);
+  transition: all 0.6s var(--ease-out-soft);
+}
+.step:hover {
+  background: rgba(197,165,90,0.06);
+  border-color: rgba(197,165,90,0.2);
+  transform: translateY(-4px);
+}
+.step-number {
+  font-family: var(--serif);
+  font-size: 3rem;
+  font-weight: 300;
+  color: rgba(197,165,90,0.15);
+  line-height: 1;
+  margin-bottom: 1.2rem;
+}
+.step-title {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.step-desc {
+  font-size: 0.85rem;
+  color: var(--white-muted);
+  line-height: 1.7;
+}
+
+/* ─── ESG ─── */
+.esg {
+  background: linear-gradient(180deg, var(--black-deep) 0%, #080a06 50%, var(--black-deep) 100%);
+}
+.esg-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.esg-image {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  aspect-ratio: 4/5;
+}
+.esg-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.esg-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(34,80,20,0.3) 0%, transparent 60%);
+}
+.esg-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.esg-text h2 em { color: var(--gold); font-style: italic; }
+.esg-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.esg-pillar {
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  background: rgba(34,80,20,0.08);
+  border: 1px solid rgba(34,120,40,0.12);
+}
+.esg-pillar-title {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: #7ec97e;
+  margin-bottom: 0.5rem;
+}
+.esg-pillar p {
+  font-size: 0.8rem;
+  color: var(--white-muted);
+  line-height: 1.6;
+}
+
+/* ─── MARKET TRENDS ─── */
+.market-trends {
+  background: var(--black);
+  position: relative;
+  overflow: hidden;
+}
+.market-trends-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.72) 52%, rgba(5,5,5,0.42) 100%),
+    url('assets/generated/amara-market-corridor.png') center / cover no-repeat,
+    radial-gradient(ellipse 50% 50% at 20% 50%, rgba(197,165,90,0.04) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 80% 50%, rgba(197,165,90,0.03) 0%, transparent 70%);
+}
+.market-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+  position: relative;
+  z-index: 2;
+}
+.market-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.market-header h2 em { color: var(--gold); font-style: italic; }
+.market-cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 2;
+}
+.market-card {
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  background: rgba(197,165,90,0.03);
+  border: 1px solid rgba(197,165,90,0.08);
+  text-align: center;
+  transition: all 0.6s var(--ease-out-soft);
+}
+.market-card:hover {
+  border-color: rgba(197,165,90,0.25);
+  transform: translateY(-6px);
+}
+.market-card-number {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 300;
+  color: var(--gold);
+  line-height: 1;
+}
+.market-card-label {
+  font-size: 0.8rem;
+  color: var(--white-muted);
+  margin-top: 0.8rem;
+  line-height: 1.6;
+}
+.market-card-detail {
+  font-size: 0.7rem;
+  color: var(--gold-dim);
+  margin-top: 0.5rem;
+  letter-spacing: 0.05em;
+}
+
+/* ─── MINING SECTION (Full Bleed) ─── */
+.mining {
+  min-height: 80dvh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+.mining-bg {
+  position: absolute;
+  inset: 0;
+}
+.mining-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mining-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.4) 50%, rgba(5,5,5,0.7) 100%);
+}
+.mining-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+  padding: 4rem;
+}
+.mining-content h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.mining-content h2 em { color: var(--gold); font-style: italic; }
+.mining-content p {
+  font-size: 0.9rem;
+  color: var(--white-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* ─── REFINERY ─── */
+.refinery {
+  background: var(--black-deep);
+}
+.refinery-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.refinery-text h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+}
+.refinery-text h2 em { color: var(--gold); font-style: italic; }
+.refinery-text p {
+  font-size: 0.9rem;
+  color: var(--white-muted);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.refinery-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.spec-item {
+  padding: 1rem 1.2rem;
+  border-radius: 0.75rem;
+  background: rgba(197,165,90,0.04);
+  border: 1px solid rgba(197,165,90,0.08);
+}
+.spec-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-dim);
+}
+.spec-value {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  color: var(--gold);
+  margin-top: 0.3rem;
+}
+.refinery-images {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 1.5rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+}
+.refinery-images img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 1.5rem;
+}
+
+/* ─── STRATEGIC OUTLOOK ─── */
+.outlook {
+  background:
+    linear-gradient(90deg, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.8) 52%, rgba(5,5,5,0.48) 100%),
+    url('assets/generated/amara-strategic-outlook.png') center / cover no-repeat,
+    linear-gradient(180deg, var(--black-deep) 0%, #0a0908 50%, var(--black-deep) 100%);
+}
+.outlook-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 5rem;
+}
+.outlook-header h2 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.outlook-header h2 em { color: var(--gold); font-style: italic; }
+.outlook-cards {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+.outlook-card {
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  background: rgba(197,165,90,0.03);
+  border: 1px solid rgba(197,165,90,0.08);
+  transition: all 0.6s var(--ease-out-soft);
+}
+.outlook-card:hover {
+  border-color: rgba(197,165,90,0.25);
+  transform: translateY(-4px);
+}
+.outlook-card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: rgba(197,165,90,0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+.outlook-card-icon svg {
+  width: 24px;
+  height: 24px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+.outlook-card h3 {
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+}
+.outlook-card p {
+  font-size: 0.85rem;
+  color: var(--white-muted);
+  line-height: 1.7;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--black);
+  border-top: 1px solid rgba(197,165,90,0.08);
+  padding: 6rem 2rem 3rem;
+}
+.footer-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 4rem;
+  margin-bottom: 4rem;
+}
+.footer-brand h3 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+.footer-brand p {
+  font-size: 0.8rem;
+  color: var(--white-muted);
+  line-height: 1.7;
+  max-width: 320px;
+}
+.footer-col h4 {
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+}
+.footer-col a {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--white-muted);
+  text-decoration: none;
+  margin-bottom: 0.6rem;
+  transition: color 0.3s var(--ease-out-soft);
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(197,165,90,0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-bottom p {
+  font-size: 0.7rem;
+  color: var(--white-muted);
+}
+.footer-social {
+  display: flex;
+  gap: 1rem;
+}
+.footer-social a {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(197,165,90,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white-muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: all 0.4s var(--ease-out-soft);
+}
+.footer-social a:hover {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+/* ─── PARALLAX WRAPPER ─── */
+.parallax-container {
+  position: relative;
+  overflow: hidden;
+}
+.parallax-bg {
+  position: absolute;
+  inset: -20%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 1024px) {
+  .about-grid, .esg-grid, .refinery-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .steps { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .section-pad { padding: 5rem 1.5rem; }
+  .section-pad-lg { padding: 6rem 1.5rem; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .market-cards { grid-template-columns: 1fr; }
+  .outlook-cards { grid-template-columns: 1fr; }
+  .esg-pillars { grid-template-columns: 1fr; }
+  .refinery-specs { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+  .mining-content { padding: 2rem; }
+  .hero-title { font-size: clamp(3rem, 12vw, 6rem); }
+  .hero { padding-top: 8rem; }
+  .hero-actions { flex-direction: column; width: min(100%, 19rem); margin-inline: auto; }
+  .hero-proof { gap: 1.25rem; margin-top: 2.5rem; }
+  .hero-proof-value { font-size: 1.1rem; }
+  .hero-proof-label { font-size: 0.48rem; letter-spacing: 0.08em; }
+  .nav::after { display: none; }
+}
+@media (max-width: 480px) {
+  .about-stats { grid-template-columns: 1fr; }
+  .commodities-grid { grid-template-columns: 1fr; }
+  .hero-proof { display: grid; grid-template-columns: 1fr 1fr; row-gap: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════ LOADING SCREEN ═══════ -->
+<div class="loader" id="loader">
+  <div class="loader-logo">AMARA</div>
+  <div class="loader-bar"></div>
+</div>
+
+<!-- ═══════ NAVIGATION ═══════ -->
+<nav class="nav" id="nav">
+  <a href="#" class="nav-logo">AMARA</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#commodities">Commodities</a></li>
+    <li><a href="#business">Business Model</a></li>
+    <li><a href="#esg">ESG</a></li>
+    <li><a href="#mining">Mining</a></li>
+    <li><a href="#outlook">Outlook</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════ MOBILE MENU ═══════ -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobileMenu()">About</a>
+  <a href="#commodities" onclick="closeMobileMenu()">Commodities</a>
+  <a href="#business" onclick="closeMobileMenu()">Business Model</a>
+  <a href="#esg" onclick="closeMobileMenu()">ESG</a>
+  <a href="#mining" onclick="closeMobileMenu()">Mining</a>
+  <a href="#outlook" onclick="closeMobileMenu()">Outlook</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contact</a>
+</div>
+
+<!-- ═══════ HERO ═══════ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-particles" id="particles"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">LONDON . DUBAI . LUSAKA</div>
+    <h1 class="hero-title"><em>Amara</em></h1>
+    <p class="hero-subtitle">Shaping Values · Building Legacies</p>
+    <p class="hero-tagline">Integrated Energy · Mining · Commodities Trading</p>
+    <div class="hero-actions">
+      <a class="hero-action primary" href="#refinery">Explore operations <span aria-hidden="true">↗</span></a>
+      <a class="hero-action" href="#contact">Partner with us</a>
+    </div>
+    <div class="hero-proof" aria-label="Amara Global key figures">
+      <div class="hero-proof-item"><span class="hero-proof-value">2,500</span><span class="hero-proof-label">Acres in Zambia</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-value">100 KG</span><span class="hero-proof-label">Daily refinery capacity</span></div>
+      <div class="hero-proof-item"><span class="hero-proof-value">2.4 T</span><span class="hero-proof-label">Annual Dubai pipeline</span></div>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ═══════ DIVIDER ═══════ -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">♾</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ═══════ ABOUT ═══════ -->
+<section class="about section-pad-lg" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <div class="eyebrow reveal">Our Story</div>
+      <h2 class="reveal reveal-delay-1"><em>Everlasting</em><br>Commitment to<br>Excellence</h2>
+      <p class="reveal reveal-delay-2">The name "Amara" means "Everlasting" — a reflection of our enduring commitment to ethical practices, environmental responsibility, and sustainable growth across the African continent.</p>
+      <p class="reveal reveal-delay-3">Founded in 2024 and headquartered in Lusaka, Zambia, Amara Global Resources LTD is a dynamic and diversified player in the African energy, mining, engineering, and infrastructure sectors. We have rapidly built a reputation for reliability, integrity, and operational excellence.</p>
+      <div class="about-stats reveal reveal-delay-4">
+        <div class="stat">
+          <div class="stat-number" data-count="4">0</div>
+          <div class="stat-label">African Nations</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="7">0</div>
+          <div class="stat-label">Commodities</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="6">0</div>
+          <div class="stat-label">Business Segments</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">2024</div>
+          <div class="stat-label">Year Founded</div>
+        </div>
+      </div>
+    </div>
+    <div class="about-image reveal">
+      <img src="assets/generated/amara-our-story.png" alt="Zambian mineral landscape and mining infrastructure at sunset" loading="lazy">
+      <div class="about-image-badge">Zambia · Tanzania · Guinea · South Africa</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ DIVIDER ═══════ -->
+<div class="divider">
+  <div class="divider-line"></div>
+  <div class="divider-icon">♦</div>
+  <div class="divider-line"></div>
+</div>
+
+<!-- ═══════ COMMODITIES ═══════ -->
+<section class="commodities section-pad-lg" id="commodities">
+  <div class="commodities-header">
+    <div class="eyebrow reveal">Portfolio</div>
+    <h2 class="reveal reveal-delay-1">Seven <em>Precious</em><br>Commodities</h2>
+    <p class="reveal reveal-delay-2">A diversified portfolio spanning precious metals, industrial minerals, and energy resources — strategically positioned for global demand.</p>
+  </div>
+  <div class="commodities-grid">
+    <div class="commodity-card reveal">
+      <img src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=600&q=80" alt="Gold" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Gold</div>
+        <div class="commodity-tag">Precious Metal</div>
+        <div class="commodity-desc">The foundation of our trading portfolio — refined to 999.9 purity for international good delivery.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-1">
+      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80" alt="Lithium" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Lithium</div>
+        <div class="commodity-tag">Battery Mineral</div>
+        <div class="commodity-desc">Powering the future — demand expected to grow 2.5X by 2030 as EV adoption accelerates globally.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-2">
+      <img src="assets/generated/amara-coal.png" alt="Coal stockpiles and conveyor system at dusk" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Coal</div>
+        <div class="commodity-tag">Thermal Energy</div>
+        <div class="commodity-desc">Industrial-grade coal supplying power generation and steel manufacturing across regional markets.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-3">
+      <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600&q=80" alt="Fuel Oil" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Fuel Oil</div>
+        <div class="commodity-tag">Energy Resource</div>
+        <div class="commodity-desc">Reliable energy supply for industrial operations, maritime logistics, and power generation.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-4">
+      <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&q=80" alt="Dolomite" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Dolomite</div>
+        <div class="commodity-tag">Industrial Mineral</div>
+        <div class="commodity-desc">Essential for construction, agriculture, and environmental applications across growing markets.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-5">
+      <img src="https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=600&q=80" alt="Manganese" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Manganese</div>
+        <div class="commodity-tag">Alloy Metal</div>
+        <div class="commodity-desc">Critical for steel production and emerging battery technologies — strategic supply chain positioning.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-5">
+      <img src="assets/generated/amara-limestone.png" alt="Limestone blocks in a modern quarry" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Limestone</div>
+        <div class="commodity-tag">Construction Mineral</div>
+        <div class="commodity-desc">Foundational material for construction, agriculture, lime processing, and regional infrastructure.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ BUSINESS MODEL ═══════ -->
+<section class="business-model section-pad-lg" id="business">
+  <div class="business-model-header">
+    <div class="eyebrow reveal">How We Work</div>
+    <h2 class="reveal reveal-delay-1">Integrated <em>Business</em><br>Model</h2>
+    <p class="reveal reveal-delay-2">A six-step value chain that ensures quality, reliability, and sustainable growth at every stage.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-number">01</div>
+      <div class="step-title">Due Diligence</div>
+      <div class="step-desc">We ensure that all products are sourced and mined from legal and licensed mines with proper documentation and verification.</div>
+    </div>
+    <div class="step reveal reveal-delay-1">
+      <div class="step-number">02</div>
+      <div class="step-title">Sourcing & Procurement</div>
+      <div class="step-desc">Strategic procurement from verified suppliers and mining operations across Africa, ensuring competitive pricing and quality assurance.</div>
+    </div>
+    <div class="step reveal reveal-delay-2">
+      <div class="step-number">03</div>
+      <div class="step-title">Logistics & Supply Chain</div>
+      <div class="step-desc">Efficient transportation and logistics management, leveraging established networks for seamless delivery across continents.</div>
+    </div>
+    <div class="step reveal reveal-delay-3">
+      <div class="step-number">04</div>
+      <div class="step-title">Storage & Warehousing</div>
+      <div class="step-desc">State-of-the-art storage facilities with strict quality control measures to preserve commodity integrity.</div>
+    </div>
+    <div class="step reveal reveal-delay-4">
+      <div class="step-number">05</div>
+      <div class="step-title">Processing & Refining</div>
+      <div class="step-desc">Advanced processing capabilities including our planned 100 KG/day gold refinery using AQUAREGIS technology.</div>
+    </div>
+    <div class="step reveal reveal-delay-5">
+      <div class="step-number">06</div>
+      <div class="step-title">Global Distribution</div>
+      <div class="step-desc">Direct access to global markets through established trading networks — Dubai, London, and Swiss good delivery standards.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ ESG ═══════ -->
+<section class="esg section-pad-lg" id="esg">
+  <div class="esg-grid">
+    <div class="esg-image reveal">
+      <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=800&q=80" alt="Sustainable mining practices" loading="lazy">
+    </div>
+    <div class="esg-text">
+      <div class="eyebrow reveal">Our Values</div>
+      <h2 class="reveal reveal-delay-1">Environmental,<br>Social & <em>Governance</em></h2>
+      <p class="reveal reveal-delay-2">At Amara Global Resources, our goal is to minimize environmental impact through responsible waste management, emissions control, and water conservation. We actively support the communities we operate in through local hiring, skills development, and investment in education and healthcare.</p>
+      <div class="esg-pillars reveal reveal-delay-3">
+        <div class="esg-pillar">
+          <div class="esg-pillar-title">Environmental</div>
+          <p>Waste management, emissions control, water conservation, and biodiversity protection across all operations.</p>
+        </div>
+        <div class="esg-pillar">
+          <div class="esg-pillar-title">Social</div>
+          <p>Local hiring, skills development, community investment, and ethical supply chain management.</p>
+        </div>
+        <div class="esg-pillar">
+          <div class="esg-pillar-title">Governance</div>
+          <p>Transparent operations, anti-corruption policies, and adherence to international best practices.</p>
+        </div>
+        <div class="esg-pillar">
+          <div class="esg-pillar-title">Sustainability</div>
+          <p>Long-term value creation through sustainable mining practices and renewable energy adoption.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MARKET TRENDS ═══════ -->
+<section class="market-trends section-pad-lg" id="trends">
+  <div class="market-trends-bg"></div>
+  <div class="market-header">
+    <div class="eyebrow reveal">Market Intelligence</div>
+    <h2 class="reveal reveal-delay-1">Global <em>Market</em><br>Trends</h2>
+    <p class="reveal reveal-delay-2">Africa's mineral exports are surging — positioning the continent as the world's fastest-growing commodity supplier.</p>
+  </div>
+  <div class="market-cards">
+    <div class="market-card reveal">
+      <div class="market-card-number" data-count="18">0</div>
+      <div class="market-card-label">Growth in African mineral exports</div>
+      <div class="market-card-detail">Year-over-year increase driven by demand from Asia and Europe</div>
+    </div>
+    <div class="market-card reveal reveal-delay-1">
+      <div class="market-card-number" data-count="16">0</div>
+      <div class="market-card-label">Increase in gold demand across emerging markets</div>
+      <div class="market-card-detail">Central bank reserves and industrial applications expanding</div>
+    </div>
+    <div class="market-card reveal reveal-delay-2">
+      <div class="market-card-number">2.5<span style="font-size:0.6em">X</span></div>
+      <div class="market-card-label">Lithium demand growth forecast by 2030</div>
+      <div class="market-card-detail">Electric vehicle revolution driving unprecedented demand</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ MINING FULL-BLEED ═══════ -->
+<section class="mining section-pad-lg" id="mining">
+  <div class="mining-bg parallax-container">
+    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1600&q=80" alt="Gold mining operations" loading="lazy" class="parallax-bg" style="position:absolute;inset:-20%;width:140%;height:140%;object-fit:cover;">
+  </div>
+  <div class="mining-content">
+    <div class="eyebrow reveal">Core Operations</div>
+    <h2 class="reveal reveal-delay-1">Gold Mining<br>& <em>Extraction</em></h2>
+    <p class="reveal reveal-delay-2">From exploration and drilling to locate gold-rich deposits, through crushing and processing ore using advanced technology, to refining to 999.9% purity — we manage the complete value chain.</p>
+    <p class="reveal reveal-delay-3">Our 100 KG/day refinery project in Lusaka, Zambia will be designed on AQUAREGIS technology with high recovery rates, standardized for Dubai, Swiss, and London good delivery.</p>
+  </div>
+</section>
+
+<!-- ═══════ REFINERY ═══════ -->
+<section class="refinery section-pad-lg" id="refinery">
+  <div class="refinery-grid">
+    <div class="refinery-text">
+      <div class="eyebrow reveal">Infrastructure</div>
+      <h2 class="reveal reveal-delay-1">The <em>Refinery</em><br>Project</h2>
+      <p class="reveal reveal-delay-2">A flagship 100 KG processing capacity per day gold refinery in Lusaka, Zambia — built around AQUAREGIS technology for high recovery rates.</p>
+      <p class="reveal reveal-delay-3">The facility includes a 13,000 SFT land area with 10,000 SFT refinery BUA and 2,000 SFT office space, secured within a high-security compound on the Zambian Development Authority long-term lease.</p>
+      <div class="refinery-specs reveal reveal-delay-4">
+        <div class="spec-item">
+          <div class="spec-label">Land Area</div>
+          <div class="spec-value">13,000 SFT</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Refinery BUA</div>
+          <div class="spec-value">10,000 SFT</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Daily Capacity</div>
+          <div class="spec-value">100 KG</div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-label">Purity Target</div>
+          <div class="spec-value">999.9%</div>
+        </div>
+      </div>
+    </div>
+    <div class="refinery-images reveal">
+      <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Industrial refinery facility" loading="lazy">
+      <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80" alt="Gold processing" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ STRATEGIC OUTLOOK ═══════ -->
+<section class="outlook section-pad-lg" id="outlook">
+  <div class="outlook-header">
+    <div class="eyebrow reveal">Looking Ahead</div>
+    <h2 class="reveal reveal-delay-1">Strategic <em>Outlook</em></h2>
+    <p class="reveal reveal-delay-2">Positioning for sustainable growth through expansion, diversification, and value-added processing across Africa's resource landscape.</p>
+  </div>
+  <div class="outlook-cards">
+    <div class="outlook-card reveal">
+      <div class="outlook-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <h3>Lithium Refining Expansion</h3>
+      <p>Expanding lithium processing capabilities to meet the 2.5X demand growth forecast by 2030, with planned facilities in Zambia and Tanzania.</p>
+    </div>
+    <div class="outlook-card reveal reveal-delay-1">
+      <div class="outlook-card-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      </div>
+      <h3>Trading Diversification</h3>
+      <p>Broadening commodity trading across new markets in Asia, Europe, and the Middle East, leveraging our multi-continent presence.</p>
+    </div>
+    <div class="outlook-card reveal reveal-delay-2">
+      <div class="outlook-card-icon">
+        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      </div>
+      <h3>Value-Added Processing</h3>
+      <p>Building downstream processing capacity to move beyond raw material export, creating higher margins and local employment.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ FOOTER ═══════ -->
+<footer class="footer" id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <h3>Amara</h3>
+      <p>Shaping Values, Building Legacies — an integrated energy, mining, and infrastructure company committed to sustainable growth across Africa and beyond.</p>
+      <p style="margin-top: 1rem; font-size: 0.75rem; color: var(--gold-dim);">Plot 22489, Haupapa Road<br>Old Kalomo Road, Woodlands<br>Lusaka, Zambia</p>
+    </div>
+    <div class="footer-col">
+      <h4>Segments</h4>
+      <a href="#">Energy & Power</a>
+      <a href="#">Mining & Minerals</a>
+      <a href="#">Engineering</a>
+      <a href="#">Infrastructure</a>
+    </div>
+    <div class="footer-col">
+      <h4>Commodities</h4>
+      <a href="#">Gold</a>
+      <a href="#">Lithium</a>
+      <a href="#">Coal</a>
+      <a href="#">Manganese</a>
+      <a href="#">Dolomite</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#about">About Us</a>
+      <a href="#esg">ESG Commitments</a>
+      <a href="#outlook">Strategic Outlook</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 Amara Global Resources LTD. All rights reserved.</p>
+    <div class="footer-social">
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="#" aria-label="Twitter">X</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   AMARA GLOBAL — JAVASCRIPT
+   Motion choreography & scroll orchestration
+   ═══════════════════════════════════════════════════════ */
+
+// ─── LOADER ───
+const hideLoader = () => {
+  const loader = document.getElementById('loader');
+  if (loader) loader.classList.add('hidden');
+};
+// Branded intro: show the loader a minimum of ~1.4s, then reveal the moment
+// the DOM is ready — never wait for all images/fonts to finish loading.
+const loaderStart = performance.now();
+window.addEventListener('load', hideLoader);
+document.addEventListener('DOMContentLoaded', () => {
+  const waited = performance.now() - loaderStart;
+  setTimeout(hideLoader, Math.max(0, 1400 - waited));
+});
+setTimeout(hideLoader, 4000); // hard fallback: never leave the overlay up
+
+// ─── PARTICLES ───
+const particlesContainer = document.getElementById('particles');
+for (let i = 0; i < 40; i++) {
+  const p = document.createElement('div');
+  p.className = 'particle';
+  p.style.left = Math.random() * 100 + '%';
+  p.style.animationDelay = Math.random() * 8 + 's';
+  p.style.animationDuration = (6 + Math.random() * 6) + 's';
+  p.style.width = p.style.height = (1 + Math.random() * 2) + 'px';
+  particlesContainer.appendChild(p);
+}
+
+// ─── NAV SCROLL STATE ───
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  nav.classList.toggle('scrolled', scrollY > 80);
+  lastScroll = scrollY;
+}, { passive: true });
+
+// ─── HAMBURGER ───
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+function closeMobileMenu() {
+  hamburger.classList.remove('active');
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// ─── INTERSECTION OBSERVER — SCROLL REVEALS ───
+const observerOptions = {
+  threshold: 0.1,
+  rootMargin: '0px 0px -60px 0px'
+};
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ─── ANIMATED COUNTERS ───
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const target = parseInt(el.getAttribute('data-count'));
+      if (isNaN(target)) return;
+      const duration = 2000;
+      const startTime = performance.now();
+      const animate = (now) => {
+        const elapsed = now - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(eased * target);
+        if (progress < 1) requestAnimationFrame(animate);
+      };
+      requestAnimationFrame(animate);
+      counterObserver.unobserve(el);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+// ─── PARALLAX EFFECT (light, GPU-safe) ───
+const parallaxElements = document.querySelectorAll('.parallax-bg');
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      parallaxElements.forEach(el => {
+        const rect = el.parentElement.getBoundingClientRect();
+        const scrolled = rect.top / window.innerHeight;
+        el.style.transform = `translateY(${scrolled * 30}px)`;
+      });
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+// ─── SMOOTH ANCHOR SCROLL ───
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href === '#') return;
+    e.preventDefault();
+    const target = document.querySelector(href);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// ─── MAGNETIC CURSOR GLOW (subtle) ───
+document.addEventListener('mousemove', (e) => {
+  const x = e.clientX;
+  const y = e.clientY;
+  document.body.style.setProperty('--mx', x + 'px');
+  document.body.style.setProperty('--my', y + 'px');
+});
+</script>
+
+</body>
+</html>
