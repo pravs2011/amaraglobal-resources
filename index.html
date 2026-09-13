@@ -517,6 +517,7 @@ section { position: relative; }
   border-radius: 999px;
   margin-bottom: 1.5rem;
 }
+.about-text > .eyebrow { align-self: flex-start; }
 
 /* ─── ABOUT SECTION ─── */
 .about {
@@ -527,29 +528,42 @@ section { position: relative; }
   max-width: 1300px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 4.5rem;
+  align-items: stretch;
+}
+.about-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .about-text h2 {
   font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
   font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 2rem;
+  line-height: 1.12;
+  margin-bottom: 1.6rem;
 }
 .about-text h2 em { color: var(--gold); font-style: italic; }
+.about-text .about-lead {
+  font-size: 1.02rem;
+  color: #ede5d5;
+  line-height: 1.65;
+  margin-bottom: 1.15rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
 .about-text p {
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   color: var(--white-muted);
-  line-height: 1.8;
-  margin-bottom: 1.2rem;
+  line-height: 1.7;
+  margin-bottom: 0.85rem;
+}
+.about-paragraphs p:last-child {
+  margin-bottom: 0;
 }
 .about-stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-top: 3rem;
+  display: none;
 }
 .stat {
   padding: 1.5rem 0;
@@ -573,7 +587,8 @@ section { position: relative; }
   position: relative;
   border-radius: 1.5rem;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  height: 100%;
+  min-height: 520px;
 }
 .about-image img {
   width: 100%;
@@ -629,64 +644,60 @@ section { position: relative; }
   gap: 1.5rem;
 }
 .commodity-card {
+  display: flex;
+  flex-direction: column;
   position: relative;
-  border-radius: 1rem;
+  border: 1px solid rgba(197,165,90,0.22);
+  border-radius: 0.2rem;
   overflow: hidden;
-  aspect-ratio: 3/4;
+  aspect-ratio: 0.78;
+  background: #0b0b10;
   cursor: pointer;
-  group: true;
 }
 .commodity-card img {
   width: 100%;
-  height: 100%;
+  height: 54%;
+  flex: 0 0 54%;
   object-fit: cover;
-  transition: transform 1.2s var(--ease-out-soft);
+  transition: transform 0.8s var(--ease-out-soft);
 }
-.commodity-card:hover img { transform: scale(1.08); }
+.commodity-card:hover img { transform: scale(1.05); }
 .commodity-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(180deg, transparent 30%, rgba(5,5,5,0.85) 100%);
-  z-index: 1;
-  transition: opacity 0.6s var(--ease-out-soft);
-}
-.commodity-card:hover::before {
-  background: linear-gradient(180deg, transparent 20%, rgba(5,5,5,0.9) 100%);
+  display: none;
 }
 .commodity-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  position: relative;
   z-index: 2;
-  padding: 2rem;
-  transform: translateY(10px);
-  transition: transform 0.6s var(--ease-out-soft);
+  flex: 1;
+  padding: 2rem 1.9rem 2.25rem;
+  background: #0b0b10;
 }
-.commodity-card:hover .commodity-content { transform: translateY(0); }
 .commodity-name {
-  font-family: var(--serif);
-  font-size: 1.8rem;
-  font-weight: 400;
-  color: var(--white);
-  margin-bottom: 0.3rem;
+  font-family: var(--sans);
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+}
+.commodity-name::after {
+  content: '';
+  display: block;
+  width: 100px;
+  height: 3px;
+  margin-top: 1rem;
+  background: var(--gold-dim);
 }
 .commodity-tag {
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
+  display: none;
 }
 .commodity-desc {
-  font-size: 0.8rem;
-  color: var(--white-muted);
-  margin-top: 0.8rem;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.6s var(--ease-out-soft) 0.1s;
+  font-size: 1rem;
+  color: var(--white);
+  line-height: 1.45;
+  margin-top: 1.35rem;
 }
-.commodity-card:hover .commodity-desc { opacity: 1; transform: translateY(0); }
 
 /* ─── BUSINESS MODEL ─── */
 .business-model {
@@ -1163,6 +1174,7 @@ section { position: relative; }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .about-grid, .esg-grid, .refinery-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-image { position: static; max-height: none; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
@@ -1269,9 +1281,15 @@ section { position: relative; }
     <div class="about-text">
       <div class="eyebrow reveal">Our Story</div>
       <h2 class="reveal reveal-delay-1"><em>Everlasting</em><br>Commitment to<br>Excellence</h2>
-      <p class="reveal reveal-delay-2">The name "Amara" means "Everlasting" — a reflection of our enduring commitment to ethical practices, environmental responsibility, and sustainable growth across the African continent.</p>
-      <p class="reveal reveal-delay-3">Founded in 2024 and headquartered in Lusaka, Zambia, Amara Global Resources LTD is a dynamic and diversified player in the African energy, mining, engineering, and infrastructure sectors. We have rapidly built a reputation for reliability, integrity, and operational excellence.</p>
-      <div class="about-stats reveal reveal-delay-4">
+      <p class="about-lead reveal reveal-delay-2">The name AMARA means &ldquo;EVERLASTING,&rdquo; reflecting our commitment to growth and long-term value for partners, clients, and employees alike.</p>
+      <div class="about-paragraphs reveal reveal-delay-3">
+        <p>We are a young, dynamic and forward-thinking organization committed to delivering high-quality, sustainable building products that meet the evolving needs of our clients. As a business, we look forward to have an everlasting association with our partners, clients and employees by seamlessly integrating global expertise with local insights. Our commitment to excellence and sustainability drives us to create value for all those who are associated with us with an aim to position us as a trusted business partner.</p>
+        <p>We are fortunate to position ourselves in some the world's fastest-growing economies, drawn by increasingly diverse markets and infrastructure development under the patronage of their visionary leaders who have put the country on the growth map in a brief span of time.</p>
+        <p>Built on a strong foundation of integrity, innovation, and excellence, we position ourselves to grow into a trusted and reliable partner. Our journey has been driven by a clear vision of our partners who have created sustainable value for our customers while continuously adapting to market trends and technological advancements. The management team consists of professionals that have worked in &ldquo;C&rdquo; levels with various large corporation globally. Our experienced team of experts, leverage cutting-edge technology and data-driven strategies to deliver reliable, efficient, and sustainable outcomes.</p>
+        <p>We aim to maintain the highest standards of professionalism and accountability in every aspect of our operations. By fostering a culture of excellence, inclusion and continuous improvement, we ensure that our processes, services, and outcomes remain efficient, reliable, and competitive. We constantly strive to provide effective solutions by leveraging our business knowledge, best in class practices and technical expertise as we believe in continuous research, learning and exploration to provide innovative products.</p>
+        <p>As an upcoming young leader in refining and trading essential minerals in Zambia, Tanzania, Guinea Conakry, we aim to deliver quality minerals with sustainable practices, Integrated refining and trading across multiple commodities.</p>
+      </div>
+      <div class="about-stats reveal reveal-delay-4" hidden style="display: none;">
         <div class="stat">
           <div class="stat-number" data-count="4">0</div>
           <div class="stat-label">African Nations</div>
@@ -1308,7 +1326,7 @@ section { position: relative; }
 <section class="commodities section-pad-lg" id="commodities">
   <div class="commodities-header">
     <div class="eyebrow reveal">Portfolio</div>
-    <h2 class="reveal reveal-delay-1">Seven <em>Precious</em><br>Commodities</h2>
+    <h2 class="reveal reveal-delay-1">Eight <em>Precious</em><br>Commodities</h2>
     <p class="reveal reveal-delay-2">A diversified portfolio spanning precious metals, industrial minerals, and energy resources — strategically positioned for global demand.</p>
   </div>
   <div class="commodities-grid">
@@ -1321,7 +1339,7 @@ section { position: relative; }
       </div>
     </div>
     <div class="commodity-card reveal reveal-delay-1">
-      <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=600&q=80" alt="Lithium" loading="lazy">
+      <img src="assets/generated/amara-lithium.png" alt="Lithium-bearing spodumene ore at an open-pit mine" loading="lazy">
       <div class="commodity-content">
         <div class="commodity-name">Lithium</div>
         <div class="commodity-tag">Battery Mineral</div>
@@ -1337,7 +1355,7 @@ section { position: relative; }
       </div>
     </div>
     <div class="commodity-card reveal reveal-delay-3">
-      <img src="https://images.unsplash.com/photo-1518709766631-a6a7f45921c3?w=600&q=80" alt="Fuel Oil" loading="lazy">
+      <img src="assets/generated/amara-fuel-oil.png" alt="Fuel oil barrels and refinery at sunset" loading="lazy">
       <div class="commodity-content">
         <div class="commodity-name">Fuel Oil</div>
         <div class="commodity-tag">Energy Resource</div>
@@ -1366,6 +1384,14 @@ section { position: relative; }
         <div class="commodity-name">Limestone</div>
         <div class="commodity-tag">Construction Mineral</div>
         <div class="commodity-desc">Foundational material for construction, agriculture, lime processing, and regional infrastructure.</div>
+      </div>
+    </div>
+    <div class="commodity-card reveal reveal-delay-5">
+      <img src="assets/generated/amara-fertilizer.png" alt="Fertilizer granules at an industrial processing plant" loading="lazy">
+      <div class="commodity-content">
+        <div class="commodity-name">Fertilizer</div>
+        <div class="commodity-tag">Agricultural Input</div>
+        <div class="commodity-desc">Essential agricultural input supporting food production and resilient regional supply chains.</div>
       </div>
     </div>
   </div>
