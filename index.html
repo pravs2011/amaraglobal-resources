@@ -354,6 +354,16 @@ body::after {
   opacity: 0;
   animation: heroFadeUp 1.2s var(--ease-out-expo) 0.7s forwards;
 }
+.hero-logo {
+  display: block;
+  width: min(540px, 82vw);
+  height: auto;
+  margin: 0 auto 0.5rem;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.24));
+  opacity: 0;
+  animation: heroFadeUp 1.2s var(--ease-out-expo) 0.7s forwards;
+}
 .hero-title em {
   font-style: italic;
   color: var(--gold);
@@ -1226,8 +1236,7 @@ section { position: relative; }
   <div class="hero-particles" id="particles"></div>
   <div class="hero-content">
     <div class="hero-eyebrow">LONDON . DUBAI . LUSAKA</div>
-    <h1 class="hero-title"><em>Amara</em></h1>
-    <p class="hero-subtitle">Shaping Values · Building Legacies</p>
+    <h1 class="hero-title"><img class="hero-logo" src="images/logo-landscape-white.png" alt="Amara Global — Shaping Values, Building Legacies"></h1>
     <p class="hero-tagline">Integrated Energy · Mining · Commodities Trading</p>
     <div class="hero-actions">
       <a class="hero-action primary" href="#refinery">Explore operations <span aria-hidden="true">↗</span></a>
