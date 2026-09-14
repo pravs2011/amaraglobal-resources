@@ -1,2 +1,50 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
 # graft's local graph cache — regenerable, not committed (run `graft build`).
 /graft/
+
+# Editor & IDE Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Local Development & Environment
+.env
+.env.local
+.env.*.local
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Dependencies & Build Output
+node_modules/
+vendor/
+dist/
+build/
+.cache/
+
+# AI Assistants & Local Tool Configs
+.claude/
+.agents/
+
+# Archives & Temporary Files
+*.zip
+*.tar.gz
+*.rar
+*.7z
+*.tmp
+*.bak
