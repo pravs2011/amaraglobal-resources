@@ -1,11 +1,11 @@
 {
     "schema_version": 1,
-    "commit": "eca8ea74981beccfea5b02d922a4a2e37a9586bd",
-    "indexed_at": "2026-09-14T06:16:13Z",
+    "commit": "c9e85d95bb98d338969d12519494768f476b2afc",
+    "indexed_at": "2026-09-14T06:22:26Z",
     "project": "Users-pravs-Documents-code-jayessh-amaraglobal-website",
     "nodes": 104,
     "edges": 100,
     "original_size": 1769472,
-    "compressed_size": 17890,
+    "compressed_size": 17911,
     "compression_level": 3
 }

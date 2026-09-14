@@ -98,11 +98,10 @@ body::after {
 }
 .loader.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 .loader-logo {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 8vw, 6rem);
-  font-weight: 300;
-  color: var(--gold);
-  letter-spacing: 0.15em;
+  display: block;
+  width: min(230px, 55vw);
+  height: auto;
+  filter: drop-shadow(0 10px 24px rgba(0,0,0,0.35));
   animation: loaderPulse 1.8s var(--ease-out-soft) infinite;
 }
 .loader-bar {
@@ -1602,7 +1601,7 @@ section { position: relative; }
 
 <!-- ═══════ LOADING SCREEN ═══════ -->
 <div class="loader" id="loader">
-  <div class="loader-logo">AMARA</div>
+  <img class="loader-logo" src="images/logo-icon.png" alt="Amara Global">
   <div class="loader-bar"></div>
 </div>
 
