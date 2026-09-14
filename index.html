@@ -770,71 +770,98 @@ section { position: relative; }
   color: var(--white-muted);
   line-height: 1.7;
 }
+.steps .step.reveal {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
 
 /* ─── ESG ─── */
 .esg {
-  background: linear-gradient(180deg, var(--black-deep) 0%, #080a06 50%, var(--black-deep) 100%);
-}
-.esg-grid {
-  max-width: 1300px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 6rem;
-  align-items: center;
-}
-.esg-image {
   position: relative;
-  border-radius: 1.5rem;
   overflow: hidden;
-  aspect-ratio: 4/5;
+  background: var(--black-deep);
 }
-.esg-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.esg-image::after {
+.esg::before {
   content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(34,80,20,0.3) 0%, transparent 60%);
+  inset: 0 0 0 42%;
+  background:
+    linear-gradient(90deg, var(--black-deep) 0%, rgba(5,5,5,0.88) 20%, rgba(5,5,5,0.3) 68%, rgba(5,5,5,0.18) 100%),
+    url('https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=1600&q=85') center / cover no-repeat;
+  opacity: 0.95;
+}
+.esg-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: block;
+}
+.esg-image {
+  display: none;
 }
 .esg-text h2 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 3.5rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+  max-width: 920px;
+  font-family: var(--sans);
+  font-size: clamp(2.5rem, 5.4vw, 5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.75rem;
 }
-.esg-text h2 em { color: var(--gold); font-style: italic; }
+.esg-text h2 em { color: var(--gold); font-style: normal; }
+.esg-text > p {
+  max-width: 850px;
+  font-size: clamp(1rem, 1.6vw, 1.35rem);
+  color: var(--white);
+  line-height: 1.45;
+  font-weight: 500;
+}
 .esg-pillars {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: 2.5rem;
+  column-gap: 4.5rem;
+  margin-top: 2rem;
+  max-width: 940px;
 }
 .esg-pillar {
-  padding: 1.5rem;
-  border-radius: 0.75rem;
-  background: rgba(34,80,20,0.08);
-  border: 1px solid rgba(34,120,40,0.12);
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.35rem 0;
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid rgba(197,165,90,0.18);
+}
+.esg-pillar-icon {
+  width: 58px;
+  height: 58px;
+  color: var(--gold);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .esg-pillar-title {
-  font-family: var(--serif);
-  font-size: 1.1rem;
-  color: #7ec97e;
-  margin-bottom: 0.5rem;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.45rem;
 }
 .esg-pillar p {
-  font-size: 0.8rem;
-  color: var(--white-muted);
-  line-height: 1.6;
+  font-size: 0.9rem;
+  color: var(--white);
+  line-height: 1.5;
 }
 
 /* ─── MARKET TRENDS ─── */
 .market-trends {
-  background: var(--black);
+  background: var(--black-deep);
   position: relative;
   overflow: hidden;
 }
@@ -848,103 +875,151 @@ section { position: relative; }
     radial-gradient(ellipse 40% 40% at 80% 50%, rgba(197,165,90,0.03) 0%, transparent 70%);
 }
 .market-header {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto 5rem;
+  max-width: 820px;
+  margin: 0 auto 4rem;
   position: relative;
   z-index: 2;
 }
 .market-header h2 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1rem;
+  font-family: var(--sans);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  margin-bottom: 1.5rem;
 }
-.market-header h2 em { color: var(--gold); font-style: italic; }
+.market-header h2 em { color: var(--gold); font-style: normal; }
+.market-header .eyebrow { display: none; }
+.market-header p {
+  max-width: 760px;
+  font-size: clamp(1rem, 1.6vw, 1.3rem);
+  color: var(--white);
+  line-height: 1.5;
+}
 .market-cards {
-  max-width: 1200px;
+  max-width: 1320px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
   position: relative;
   z-index: 2;
 }
 .market-card {
-  padding: 3rem 2rem;
-  border-radius: 1rem;
-  background: rgba(197,165,90,0.03);
-  border: 1px solid rgba(197,165,90,0.08);
-  text-align: center;
-  transition: all 0.6s var(--ease-out-soft);
+  min-height: 260px;
+  padding: 2rem 1.6rem 2.2rem;
+  border-radius: 0.25rem;
+  background: rgba(5,5,5,0.62);
+  border: 1px solid rgba(197,165,90,0.2);
+  transition: transform 0.5s var(--ease-out-soft), border-color 0.5s var(--ease-out-soft), background 0.5s var(--ease-out-soft);
 }
 .market-card:hover {
   border-color: rgba(197,165,90,0.25);
-  transform: translateY(-6px);
+  background: rgba(197,165,90,0.08);
+  transform: translateY(-5px);
 }
 .market-card-number {
-  font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 300;
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
   color: var(--gold);
-  line-height: 1;
+  text-transform: uppercase;
 }
 .market-card-label {
-  font-size: 0.8rem;
-  color: var(--white-muted);
-  margin-top: 0.8rem;
-  line-height: 1.6;
+  font-family: var(--sans);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-top: 1.3rem;
+  line-height: 1.2;
 }
 .market-card-detail {
-  font-size: 0.7rem;
-  color: var(--gold-dim);
-  margin-top: 0.5rem;
-  letter-spacing: 0.05em;
+  font-size: 0.9rem;
+  color: var(--white-muted);
+  margin-top: 1.1rem;
+  line-height: 1.6;
 }
 
 /* ─── MINING SECTION (Full Bleed) ─── */
 .mining {
-  min-height: 80dvh;
-  display: flex;
-  align-items: center;
+  min-height: 88dvh;
   position: relative;
   overflow: hidden;
+  background: #101016;
 }
 .mining-bg {
-  position: absolute;
-  inset: 0;
+  display: none;
 }
-.mining-bg img {
+.mining-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.25fr);
+  gap: clamp(3rem, 8vw, 8rem);
+  align-items: center;
+}
+.mining-image-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 0.15rem;
+  aspect-ratio: 0.86;
+  max-width: 590px;
+  overflow: hidden;
+}
+.mining-image {
   width: 100%;
   height: 100%;
+  min-height: 0;
   object-fit: cover;
+  filter: saturate(1.1) contrast(1.05);
 }
-.mining-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(90deg, rgba(5,5,5,0.9) 0%, rgba(5,5,5,0.4) 50%, rgba(5,5,5,0.7) 100%);
-}
-.mining-content {
+.mining-operations {
   position: relative;
-  z-index: 2;
-  max-width: 600px;
-  padding: 4rem;
+  min-height: 600px;
+  padding: 1rem 0 5.5rem;
 }
-.mining-content h2 {
-  font-family: var(--serif);
-  font-size: clamp(2.5rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.1;
-  margin-bottom: 1.5rem;
+.mining-operation {
+  display: grid;
+  grid-template-columns: 62px minmax(0, 1fr);
+  column-gap: 1rem;
+  align-items: start;
+  padding: 0.25rem 0 2.4rem;
 }
-.mining-content h2 em { color: var(--gold); font-style: italic; }
-.mining-content p {
-  font-size: 0.9rem;
-  color: var(--white-muted);
-  line-height: 1.8;
-  margin-bottom: 1rem;
+.mining-operation-number {
+  font-family: var(--sans);
+  font-size: clamp(2.6rem, 4vw, 4.1rem);
+  font-weight: 500;
+  line-height: 0.95;
+  color: var(--gold);
+}
+.mining-operation h2 {
+  font-family: var(--sans);
+  font-size: clamp(2rem, 4vw, 3.7rem);
+  font-weight: 700;
+  line-height: 0.98;
+  color: var(--white);
+  margin: 0 0 1rem;
+}
+.mining-operation p {
+  font-size: clamp(0.95rem, 1.3vw, 1.2rem);
+  color: var(--gold);
+  line-height: 1.4;
+  margin: 0;
+}
+.mining-wordmark {
+  position: absolute;
+  right: -0.08em;
+  bottom: -0.2em;
+  font-family: var(--sans);
+  font-size: clamp(5rem, 14vw, 12rem);
+  font-weight: 800;
+  line-height: 0.8;
+  letter-spacing: -0.08em;
+  color: #ffca55;
+  pointer-events: none;
 }
 
 /* ─── REFINERY ─── */
@@ -1174,6 +1249,7 @@ section { position: relative; }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .about-grid, .esg-grid, .refinery-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .market-cards { grid-template-columns: repeat(2, 1fr); }
   .about-image { position: static; max-height: none; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
@@ -1191,7 +1267,10 @@ section { position: relative; }
   .refinery-specs { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
-  .mining-content { padding: 2rem; }
+  .mining-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .mining-image-stack { max-width: none; aspect-ratio: 1.05; }
+  .mining-operations { min-height: 0; padding-bottom: 4rem; }
+  .mining-wordmark { font-size: clamp(5rem, 25vw, 9rem); }
   .hero-title { font-size: clamp(3rem, 12vw, 6rem); }
   .hero { padding-top: 8rem; }
   .hero-actions { flex-direction: column; width: min(100%, 19rem); margin-inline: auto; }
@@ -1407,33 +1486,33 @@ section { position: relative; }
   <div class="steps">
     <div class="step reveal">
       <div class="step-number">01</div>
-      <div class="step-title">Due Diligence</div>
-      <div class="step-desc">We ensure that all products are sourced and mined from legal and licensed mines with proper documentation and verification.</div>
+      <div class="step-title">Responsible Sourcing</div>
+      <div class="step-desc">Ethical, compliant, and sustainable sourcing from trusted partners across Zambia.</div>
     </div>
     <div class="step reveal reveal-delay-1">
       <div class="step-number">02</div>
-      <div class="step-title">Sourcing & Procurement</div>
-      <div class="step-desc">Strategic procurement from verified suppliers and mining operations across Africa, ensuring competitive pricing and quality assurance.</div>
+      <div class="step-title">Quality Assessment</div>
+      <div class="step-desc">Rigorous testing and grading to ensure international quality standards.</div>
     </div>
     <div class="step reveal reveal-delay-2">
       <div class="step-number">03</div>
-      <div class="step-title">Logistics & Supply Chain</div>
-      <div class="step-desc">Efficient transportation and logistics management, leveraging established networks for seamless delivery across continents.</div>
+      <div class="step-title">Refining &amp; Processing</div>
+      <div class="step-desc">Advanced refining and processing to maximize value, purity, and product performance.</div>
     </div>
     <div class="step reveal reveal-delay-3">
       <div class="step-number">04</div>
-      <div class="step-title">Storage & Warehousing</div>
-      <div class="step-desc">State-of-the-art storage facilities with strict quality control measures to preserve commodity integrity.</div>
+      <div class="step-title">Storage &amp; Logistics</div>
+      <div class="step-desc">Secure storage and efficient logistics ensuring reliability and timely delivery.</div>
     </div>
     <div class="step reveal reveal-delay-4">
       <div class="step-number">05</div>
-      <div class="step-title">Processing & Refining</div>
-      <div class="step-desc">Advanced processing capabilities including our planned 100 KG/day gold refinery using AQUAREGIS technology.</div>
+      <div class="step-title">Regional &amp; International Trading</div>
+      <div class="step-desc">Strategic trading network connecting Zambia to key regional and global markets.</div>
     </div>
     <div class="step reveal reveal-delay-5">
       <div class="step-number">06</div>
-      <div class="step-title">Global Distribution</div>
-      <div class="step-desc">Direct access to global markets through established trading networks — Dubai, London, and Swiss good delivery standards.</div>
+      <div class="step-title">Customer Delivery</div>
+      <div class="step-desc">Dependable delivery and long-term partnerships built on trust, quality, and performance.</div>
     </div>
   </div>
 </section>
@@ -1441,72 +1520,96 @@ section { position: relative; }
 <!-- ═══════ ESG ═══════ -->
 <section class="esg section-pad-lg" id="esg">
   <div class="esg-grid">
-    <div class="esg-image reveal">
-      <img src="https://images.unsplash.com/photo-1473773508845-188df298d2d1?w=800&q=80" alt="Sustainable mining practices" loading="lazy">
-    </div>
     <div class="esg-text">
-      <div class="eyebrow reveal">Our Values</div>
-      <h2 class="reveal reveal-delay-1">Environmental,<br>Social & <em>Governance</em></h2>
-      <p class="reveal reveal-delay-2">At Amara Global Resources, our goal is to minimize environmental impact through responsible waste management, emissions control, and water conservation. We actively support the communities we operate in through local hiring, skills development, and investment in education and healthcare.</p>
+      <h2 class="reveal reveal-delay-1">ESG, Safety &amp; <em>Community Impact</em></h2>
+      <p class="reveal reveal-delay-2">Building value responsibly through people, planet, and governance.</p>
       <div class="esg-pillars reveal reveal-delay-3">
         <div class="esg-pillar">
-          <div class="esg-pillar-title">Environmental</div>
-          <p>Waste management, emissions control, water conservation, and biodiversity protection across all operations.</p>
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M32 5 52 12v17c0 13-8 24-20 30C20 53 12 42 12 29V12L32 5Z"/><path d="m22 31 7 7 14-15"/></svg>
+          <div><div class="esg-pillar-title">Responsible Sourcing</div><p>We partner with ethical suppliers and uphold responsible sourcing practices across our value chain.</p></div>
         </div>
         <div class="esg-pillar">
-          <div class="esg-pillar-title">Social</div>
-          <p>Local hiring, skills development, community investment, and ethical supply chain management.</p>
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M18 28h28l-3-13H21l-3 13Z"/><path d="M12 28h40M16 28v19M48 28v19M10 47h44"/><path d="M24 15v-5h16v5"/></svg>
+          <div><div class="esg-pillar-title">Worker Health &amp; Safety</div><p>Safety is our core value. We foster a culture of prevention, training, and continuous improvement.</p></div>
         </div>
         <div class="esg-pillar">
-          <div class="esg-pillar-title">Governance</div>
-          <p>Transparent operations, anti-corruption policies, and adherence to international best practices.</p>
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M43 7C28 10 18 19 18 34c0 10 6 17 15 20"/><path d="M43 7c-1 12-6 20-15 25-7 4-11 10-10 18"/><path d="M18 34c7-1 13 1 18 6"/></svg>
+          <div><div class="esg-pillar-title">Environmental Controls</div><p>We implement robust environmental management systems to protect land, water, and biodiversity.</p></div>
         </div>
         <div class="esg-pillar">
-          <div class="esg-pillar-title">Sustainability</div>
-          <p>Long-term value creation through sustainable mining practices and renewable energy adoption.</p>
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="m32 7 10 10-10 10-10-10L32 7ZM17 22l10 10-10 10L7 32l10-10ZM47 22l10 10-10 10-10-10 10-10ZM32 37l10 10-10 10-10-10 10-10Z"/></svg>
+          <div><div class="esg-pillar-title">Emissions &amp; Waste Management</div><p>We manage emissions and waste responsibly, promoting resource efficiency and circular approaches.</p></div>
+        </div>
+        <div class="esg-pillar">
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="23" cy="20" r="6"/><circle cx="41" cy="20" r="6"/><circle cx="32" cy="15" r="6"/><path d="M8 47c0-9 6-15 15-15s15 6 15 15M26 47c0-9 6-15 15-15s15 6 15 15M18 47c0-7 6-12 14-12s14 5 14 12"/></svg>
+          <div><div class="esg-pillar-title">Local Employment &amp; Skills Development</div><p>We create local jobs and invest in training to build skills and strengthen communities.</p></div>
+        </div>
+        <div class="esg-pillar">
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="16" r="5"/><circle cx="18" cy="25" r="5"/><circle cx="46" cy="25" r="5"/><path d="M32 25c-8 0-14 6-14 14v3h28v-3c0-8-6-14-14-14ZM18 34c-7 0-12 5-12 12v3h12M46 34c7 0 12 5 12 12v3H46"/><path d="M11 53c5-6 11-9 21-9s16 3 21 9"/></svg>
+          <div><div class="esg-pillar-title">Community Engagement</div><p>We engage openly with communities and support initiatives that contribute to shared, long-term value.</p></div>
+        </div>
+        <div class="esg-pillar">
+          <svg class="esg-pillar-icon" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 54h48M12 49h40M16 49V30M25 49V30M39 49V30M48 49V30M8 25h48L32 10 8 25Z"/></svg>
+          <div><div class="esg-pillar-title">Transparent Governance</div><p>We operate with integrity, accountability, and transparency—upholding strong governance and ethical business practices.</p></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════ MARKET TRENDS ═══════ -->
-<section class="market-trends section-pad-lg" id="trends">
+<!-- ═══════ STRATEGIC OUTLOOK ═══════ -->
+<section class="market-trends section-pad-lg" id="outlook">
   <div class="market-trends-bg"></div>
   <div class="market-header">
-    <div class="eyebrow reveal">Market Intelligence</div>
-    <h2 class="reveal reveal-delay-1">Global <em>Market</em><br>Trends</h2>
-    <p class="reveal reveal-delay-2">Africa's mineral exports are surging — positioning the continent as the world's fastest-growing commodity supplier.</p>
+    <h2 class="reveal reveal-delay-1">Strategic <em>Outlook</em></h2>
+    <p class="reveal reveal-delay-2">Positioning for sustainable growth through expansion, diversification, and value-added processing across Africa's resource landscape.</p>
   </div>
   <div class="market-cards">
     <div class="market-card reveal">
-      <div class="market-card-number" data-count="18">0</div>
-      <div class="market-card-label">Growth in African mineral exports</div>
-      <div class="market-card-detail">Year-over-year increase driven by demand from Asia and Europe</div>
+      <div class="market-card-number">01 / EXPANSION</div>
+      <div class="market-card-label">Lithium Refining</div>
+      <div class="market-card-detail">Expanding lithium refining capacity to meet rising global demand.</div>
     </div>
     <div class="market-card reveal reveal-delay-1">
-      <div class="market-card-number" data-count="16">0</div>
-      <div class="market-card-label">Increase in gold demand across emerging markets</div>
-      <div class="market-card-detail">Central bank reserves and industrial applications expanding</div>
+      <div class="market-card-number">02 / DIVERSIFICATION</div>
+      <div class="market-card-label">Coal &amp; Fuel Oil Trading</div>
+      <div class="market-card-detail">Diversifying coal and fuel oil trading to regional power producers.</div>
     </div>
     <div class="market-card reveal reveal-delay-2">
-      <div class="market-card-number">2.5<span style="font-size:0.6em">X</span></div>
-      <div class="market-card-label">Lithium demand growth forecast by 2030</div>
-      <div class="market-card-detail">Electric vehicle revolution driving unprecedented demand</div>
+      <div class="market-card-number">03 / VALUE CREATION</div>
+      <div class="market-card-label">Manganese &amp; Dolomite</div>
+      <div class="market-card-detail">Investing in value-added processing for manganese and dolomite.</div>
+    </div>
+    <div class="market-card reveal reveal-delay-3">
+      <div class="market-card-number">04 / RESILIENCE</div>
+      <div class="market-card-label">Supply Chain &amp; ESG</div>
+      <div class="market-card-detail">Strengthening supply chain resilience and ESG initiatives.</div>
     </div>
   </div>
 </section>
 
 <!-- ═══════ MINING FULL-BLEED ═══════ -->
 <section class="mining section-pad-lg" id="mining">
-  <div class="mining-bg parallax-container">
-    <img src="https://images.unsplash.com/photo-1578301978693-85fa9c0320b9?w=1600&q=80" alt="Gold mining operations" loading="lazy" class="parallax-bg" style="position:absolute;inset:-20%;width:140%;height:140%;object-fit:cover;">
-  </div>
-  <div class="mining-content">
-    <div class="eyebrow reveal">Core Operations</div>
-    <h2 class="reveal reveal-delay-1">Gold Mining<br>& <em>Extraction</em></h2>
-    <p class="reveal reveal-delay-2">From exploration and drilling to locate gold-rich deposits, through crushing and processing ore using advanced technology, to refining to 999.9% purity — we manage the complete value chain.</p>
-    <p class="reveal reveal-delay-3">Our 100 KG/day refinery project in Lusaka, Zambia will be designed on AQUAREGIS technology with high recovery rates, standardized for Dubai, Swiss, and London good delivery.</p>
+  <div class="mining-grid">
+    <div class="mining-image-stack reveal">
+      <img class="mining-image" src="https://images.unsplash.com/photo-1610375461246-83df859d849d?w=900&q=85" alt="Gold bars on gold-bearing rock" loading="lazy">
+      <img class="mining-image" src="assets/generated/amara-hero-refinery.png" alt="Gold mining and processing facility at dusk" loading="lazy">
+    </div>
+    <div class="mining-operations">
+      <div class="mining-operation reveal">
+        <div class="mining-operation-number">1</div>
+        <div><h2>Mining</h2><p>2500 acres of proven resources with mining permission in Zambia</p></div>
+      </div>
+      <div class="mining-operation reveal reveal-delay-1">
+        <div class="mining-operation-number">2</div>
+        <div><h2>Refinery</h2><p>100 KGs / Day gold refinery in Zambia</p></div>
+      </div>
+      <div class="mining-operation reveal reveal-delay-2">
+        <div class="mining-operation-number">3</div>
+        <div><h2>Trading</h2><p>2.4 Tons / PA of Gold Trading in Dubai</p></div>
+      </div>
+      <div class="mining-wordmark" aria-hidden="true">GOLD</div>
+    </div>
   </div>
 </section>
 
@@ -1540,38 +1643,6 @@ section { position: relative; }
     <div class="refinery-images reveal">
       <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=800&q=80" alt="Industrial refinery facility" loading="lazy">
       <img src="https://images.unsplash.com/photo-1537462715879-360eeb61a0ad?w=800&q=80" alt="Gold processing" loading="lazy">
-    </div>
-  </div>
-</section>
-
-<!-- ═══════ STRATEGIC OUTLOOK ═══════ -->
-<section class="outlook section-pad-lg" id="outlook">
-  <div class="outlook-header">
-    <div class="eyebrow reveal">Looking Ahead</div>
-    <h2 class="reveal reveal-delay-1">Strategic <em>Outlook</em></h2>
-    <p class="reveal reveal-delay-2">Positioning for sustainable growth through expansion, diversification, and value-added processing across Africa's resource landscape.</p>
-  </div>
-  <div class="outlook-cards">
-    <div class="outlook-card reveal">
-      <div class="outlook-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-      </div>
-      <h3>Lithium Refining Expansion</h3>
-      <p>Expanding lithium processing capabilities to meet the 2.5X demand growth forecast by 2030, with planned facilities in Zambia and Tanzania.</p>
-    </div>
-    <div class="outlook-card reveal reveal-delay-1">
-      <div class="outlook-card-icon">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-      </div>
-      <h3>Trading Diversification</h3>
-      <p>Broadening commodity trading across new markets in Asia, Europe, and the Middle East, leveraging our multi-continent presence.</p>
-    </div>
-    <div class="outlook-card reveal reveal-delay-2">
-      <div class="outlook-card-icon">
-        <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-      </div>
-      <h3>Value-Added Processing</h3>
-      <p>Building downstream processing capacity to move beyond raw material export, creating higher margins and local employment.</p>
     </div>
   </div>
 </section>
