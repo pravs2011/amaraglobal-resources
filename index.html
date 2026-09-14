@@ -155,13 +155,18 @@ body::after {
   border-color: rgba(197,165,90,0.2);
 }
 .nav-logo {
-  font-family: var(--serif);
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--gold);
-  letter-spacing: 0.1em;
+  display: inline-flex;
+  align-items: center;
+  width: 72px;
+  height: 42px;
   text-decoration: none;
   white-space: nowrap;
+}
+.nav-logo img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 3px 8px rgba(0,0,0,0.28));
 }
 .nav-links {
   display: flex;
@@ -521,43 +526,69 @@ section { position: relative; }
 
 /* ─── ABOUT SECTION ─── */
 .about {
-  background: var(--black-deep);
+  background:
+    linear-gradient(90deg, rgba(5,5,5,0.72) 0%, rgba(5,5,5,0.42) 58%, rgba(5,5,5,0.2) 100%),
+    url('assets/generated/amara-our-story.png') center / cover no-repeat;
   position: relative;
+  overflow: hidden;
+}
+.about::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(5,5,5,0.36), transparent 72%);
+  pointer-events: none;
 }
 .about-grid {
-  max-width: 1300px;
+  max-width: 1400px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 4.5rem;
-  align-items: stretch;
+  position: relative;
+  z-index: 1;
+  display: block;
 }
 .about-text {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 100%;
+  max-width: none;
+  padding: clamp(2rem, 5vw, 4.5rem);
+  background: rgba(5,5,5,0.78);
+  border: 1px solid rgba(197,165,90,0.24);
+  box-shadow: 0 24px 70px rgba(0,0,0,0.35);
+  backdrop-filter: blur(3px);
 }
 .about-text h2 {
-  font-family: var(--serif);
-  font-size: clamp(2.4rem, 4.2vw, 3.6rem);
-  font-weight: 300;
-  line-height: 1.12;
-  margin-bottom: 1.6rem;
+  max-width: none;
+  font-family: var(--sans);
+  font-size: clamp(3rem, 5.5vw, 5.4rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  margin-bottom: 2rem;
 }
-.about-text h2 em { color: var(--gold); font-style: italic; }
+.about-text h2 em { color: var(--gold); font-style: normal; }
 .about-text .about-lead {
-  font-size: 1.02rem;
+  max-width: none;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(197,165,90,0.4);
+  font-size: 1.15rem;
   color: #ede5d5;
-  line-height: 1.65;
-  margin-bottom: 1.15rem;
-  font-weight: 400;
-  letter-spacing: 0.01em;
+  line-height: 1.55;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+.about-paragraphs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+  max-width: none;
 }
 .about-text p {
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--white-muted);
-  line-height: 1.7;
-  margin-bottom: 0.85rem;
+  line-height: 1.72;
+  margin-bottom: 1.1rem;
 }
 .about-paragraphs p:last-child {
   margin-bottom: 0;
@@ -584,11 +615,7 @@ section { position: relative; }
   margin-top: 0.5rem;
 }
 .about-image {
-  position: relative;
-  border-radius: 1.5rem;
-  overflow: hidden;
-  height: 100%;
-  min-height: 520px;
+  display: none;
 }
 .about-image img {
   width: 100%;
@@ -601,17 +628,30 @@ section { position: relative; }
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(5,5,5,0.6) 100%);
+  background: linear-gradient(180deg, rgba(5,5,5,0.02) 35%, rgba(5,5,5,0.78) 100%);
+}
+.about-image::before {
+  content: 'AMARA / EST. 2024';
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 2;
+  color: var(--gold-light);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
 }
 .about-image-badge {
   position: absolute;
-  bottom: 2rem;
-  left: 2rem;
+  bottom: 2.25rem;
+  left: 2.25rem;
   z-index: 2;
-  font-family: var(--serif);
-  font-size: 1rem;
-  color: var(--gold);
-  letter-spacing: 0.05em;
+  font-family: var(--sans);
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--white);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
 }
 
 /* ─── COMMODITIES ─── */
@@ -1086,6 +1126,135 @@ section { position: relative; }
   border-radius: 1.5rem;
 }
 
+/* ─── MANAGEMENT TEAM ─── */
+.leadership {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 45% 80% at 8% 20%, rgba(197,165,90,0.06), transparent 70%),
+    #101016;
+}
+.leadership-header {
+  max-width: 1400px;
+  margin: 0 auto 3.5rem;
+}
+.leadership-header h2 {
+  max-width: 800px;
+  font-family: var(--sans);
+  font-size: clamp(3.2rem, 7vw, 6.5rem);
+  font-weight: 700;
+  line-height: 0.92;
+  letter-spacing: -0.05em;
+}
+.leadership-header h2 em { color: var(--gold); font-style: normal; }
+.leadership-header p {
+  max-width: 620px;
+  margin-top: 1.5rem;
+  color: var(--white-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.leadership-tabs {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+.leadership-tab {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  color: var(--white);
+  text-align: left;
+  background: rgba(5,5,5,0.3);
+  border: 1px solid rgba(197,165,90,0.16);
+  border-radius: 0.35rem;
+  cursor: pointer;
+  transition: background 0.35s var(--ease-out-soft), border-color 0.35s var(--ease-out-soft), transform 0.35s var(--ease-out-soft);
+}
+.leadership-tab:hover,
+.leadership-tab[aria-selected="true"] {
+  background: rgba(197,165,90,0.12);
+  border-color: rgba(197,165,90,0.62);
+  transform: translateY(-2px);
+}
+.leadership-tab img {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+  object-fit: cover;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+}
+.leadership-tab-name {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.leadership-tab-role {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--gold);
+  font-size: 0.62rem;
+  line-height: 1.25;
+}
+.leadership-detail {
+  max-width: 1400px;
+  margin: 2rem auto 0;
+  padding: clamp(1.5rem, 4vw, 3rem) 0 0;
+  border-top: 1px solid rgba(197,165,90,0.2);
+}
+.leadership-profile {
+  display: grid;
+  grid-template-columns: minmax(190px, 280px) minmax(0, 1fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.leadership-profile[hidden] { display: none; }
+.leadership-identity { text-align: center; }
+.leadership-portrait {
+  width: min(100%, 280px);
+  aspect-ratio: 0.9;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background: #d9d9df;
+}
+.leadership-name {
+  margin-top: 1.25rem;
+  color: var(--gold);
+  font-size: clamp(1.25rem, 2vw, 1.8rem);
+  font-weight: 700;
+  line-height: 1.05;
+}
+.leadership-role {
+  margin-top: 0.55rem;
+  color: var(--gold-light);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+.leadership-bio {
+  max-width: 900px;
+  color: var(--white);
+  font-size: 0.95rem;
+  line-height: 1.62;
+}
+.leadership-bio p { margin-bottom: 1.15rem; }
+.leadership-bio p:last-child { margin-bottom: 0; }
+.leadership-bio .bio-kicker {
+  color: var(--gold);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.leadership-bio ul {
+  margin: 0.5rem 0 0;
+  padding-left: 1.25rem;
+}
+.leadership-bio li { margin-bottom: 0.18rem; }
+
 /* ─── STRATEGIC OUTLOOK ─── */
 .outlook {
   background:
@@ -1249,8 +1418,9 @@ section { position: relative; }
 /* ─── RESPONSIVE ─── */
 @media (max-width: 1024px) {
   .about-grid, .esg-grid, .refinery-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-text, .about-image { grid-column: auto; grid-row: auto; }
   .market-cards { grid-template-columns: repeat(2, 1fr); }
-  .about-image { position: static; max-height: none; }
+  .about-image { position: static; min-height: 560px; max-height: none; }
   .steps { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
 }
@@ -1260,11 +1430,17 @@ section { position: relative; }
   .section-pad { padding: 5rem 1.5rem; }
   .section-pad-lg { padding: 6rem 1.5rem; }
   .about-stats { grid-template-columns: 1fr 1fr; }
+  .about-paragraphs { grid-template-columns: 1fr; }
+  .about-image { min-height: 480px; }
   .steps { grid-template-columns: 1fr; }
   .market-cards { grid-template-columns: 1fr; }
   .outlook-cards { grid-template-columns: 1fr; }
   .esg-pillars { grid-template-columns: 1fr; }
   .refinery-specs { grid-template-columns: 1fr; }
+  .leadership-tabs { grid-template-columns: 1fr 1fr; }
+  .leadership-profile { grid-template-columns: 1fr; }
+  .leadership-identity { text-align: left; }
+  .leadership-portrait { width: 190px; }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
   .mining-grid { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -1296,7 +1472,7 @@ section { position: relative; }
 
 <!-- ═══════ NAVIGATION ═══════ -->
 <nav class="nav" id="nav">
-  <a href="#" class="nav-logo">AMARA</a>
+  <a href="#" class="nav-logo" aria-label="Amara Global home"><img src="images/logo-icon.png" alt="Amara Global"></a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
     <li><a href="#commodities">Commodities</a></li>
@@ -1304,6 +1480,7 @@ section { position: relative; }
     <li><a href="#esg">ESG</a></li>
     <li><a href="#mining">Mining</a></li>
     <li><a href="#outlook">Outlook</a></li>
+    <li><a href="#management">Team</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
   </ul>
   <div class="hamburger" id="hamburger">
@@ -1319,6 +1496,7 @@ section { position: relative; }
   <a href="#esg" onclick="closeMobileMenu()">ESG</a>
   <a href="#mining" onclick="closeMobileMenu()">Mining</a>
   <a href="#outlook" onclick="closeMobileMenu()">Outlook</a>
+  <a href="#management" onclick="closeMobileMenu()">Team</a>
   <a href="#contact" onclick="closeMobileMenu()">Contact</a>
 </div>
 
@@ -1359,7 +1537,7 @@ section { position: relative; }
   <div class="about-grid">
     <div class="about-text">
       <div class="eyebrow reveal">Our Story</div>
-      <h2 class="reveal reveal-delay-1"><em>Everlasting</em><br>Commitment to<br>Excellence</h2>
+      <h2 class="reveal reveal-delay-1"><em>Everlasting</em> Commitment to Excellence</h2>
       <p class="about-lead reveal reveal-delay-2">The name AMARA means &ldquo;EVERLASTING,&rdquo; reflecting our commitment to growth and long-term value for partners, clients, and employees alike.</p>
       <div class="about-paragraphs reveal reveal-delay-3">
         <p>We are a young, dynamic and forward-thinking organization committed to delivering high-quality, sustainable building products that meet the evolving needs of our clients. As a business, we look forward to have an everlasting association with our partners, clients and employees by seamlessly integrating global expertise with local insights. Our commitment to excellence and sustainability drives us to create value for all those who are associated with us with an aim to position us as a trusted business partner.</p>
@@ -1647,6 +1825,98 @@ section { position: relative; }
   </div>
 </section>
 
+<!-- ═══════ MANAGEMENT TEAM ═══════ -->
+<section class="leadership section-pad-lg" id="management">
+  <div class="leadership-header">
+    <h2>Management <em>Team</em></h2>
+    <p>Experienced leadership bringing together financial stewardship, operational discipline, and cross-border growth expertise.</p>
+  </div>
+
+  <div class="leadership-tabs" role="tablist" aria-label="Management team profiles">
+    <button class="leadership-tab" type="button" role="tab" aria-selected="true" aria-controls="profile-robert" data-profile="robert">
+      <img src="images/leadership/robert-penney.png" alt="Robert A Penney">
+      <span><span class="leadership-tab-name">Robert A Penney</span><span class="leadership-tab-role">Non Executive Chairman</span></span>
+    </button>
+    <button class="leadership-tab" type="button" role="tab" aria-selected="false" aria-controls="profile-jayessh" data-profile="jayessh">
+      <img src="images/leadership/jayessh-bharaathan.png" alt="Jayessh Bharaathan">
+      <span><span class="leadership-tab-name">Jayessh Bharaathan</span><span class="leadership-tab-role">CEO &amp; Group Managing Director</span></span>
+    </button>
+    <button class="leadership-tab" type="button" role="tab" aria-selected="false" aria-controls="profile-dayakara" data-profile="dayakara">
+      <img src="images/leadership/placeholder.png" alt="(C.A) Dayakara Shetty" loading="eager">
+      <span><span class="leadership-tab-name">(C.A) Dayakara Shetty</span><span class="leadership-tab-role">Chief Financial Officer</span></span>
+    </button>
+    <button class="leadership-tab" type="button" role="tab" aria-selected="false" aria-controls="profile-rachita" data-profile="rachita">
+      <img src="images/leadership/rachita-bhat.png" alt="Rachita Bhat">
+      <span><span class="leadership-tab-name">Rachita Bhat</span><span class="leadership-tab-role">Director</span></span>
+    </button>
+  </div>
+
+  <div class="leadership-detail">
+    <article class="leadership-profile" id="profile-robert" role="tabpanel">
+      <div class="leadership-identity">
+        <img class="leadership-portrait" src="images/leadership/robert-penney.png" alt="Robert A Penney">
+        <h3 class="leadership-name">Robert A Penney</h3>
+        <p class="leadership-role">Non Executive Chairman</p>
+      </div>
+      <div class="leadership-bio">
+        <p>Robert Penney is a senior professional in the field of finance and governance. A Qualified Accountant by training, he has served various government and private enterprises spearheading the organization.</p>
+        <p>Originally from Ireland, Robert was with PKF Chartered Accountants before their rebranding and has spent over 40 years in Zambia at senior levels in finance and business management including the areas of manufacturing, property development, Agriculture related industries, mining, security services, and leisure industry to include trade management, investment, planning, fiscal control and accounting.</p>
+        <p>He had the privilege of working directly with two Zambian Presidents (Dr. Kenneth Kaunda &amp; Rupiah Banda).</p>
+        <p class="bio-kicker">Some of Roberts former roles include;</p>
+        <ul>
+          <li>Chairman of Zambian Development Agency.</li>
+          <li>Chairman of Lusaka`s Infrastructure Committee.</li>
+          <li>Deputy Chair of Mayor`s Finance committee in Lusaka.</li>
+          <li>Trade Consultant of Coras Tractala (Irish Enterprise Board) – for Zambia; supporting Irish investments in projects and General Trade into Zambia.</li>
+          <li>Guest lecturer at Wake Forest University NC on an invitational basis for MBA students.</li>
+          <li>Trustee and President of the Children of Africa foundation.</li>
+          <li>Hon Life Vice President of the Lusaka Golf Club since 1996.</li>
+          <li>Chairman (10th Year) Zambia Open International Golf Tournament South African Sunshine Tour (SST) a golf calendar event, held annually at Lusaka Golf Club.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="leadership-profile" id="profile-jayessh" role="tabpanel" hidden>
+      <div class="leadership-identity">
+        <img class="leadership-portrait" src="images/leadership/jayessh-bharaathan.png" alt="Jayessh Bharaathan">
+        <h3 class="leadership-name">Jayessh Bharaathan</h3>
+        <p class="leadership-role">CEO &amp; Group Managing Director</p>
+      </div>
+      <div class="leadership-bio">
+        <p>Jayessh is the founder of Amara Global Holdings Ltd. A former C-suite Banker, dealmaker, and institutional architect with over 32 years of high-impact global experience commanding multi-million-dollar capital ventures across the Middle East, Asia, and Africa. His authoritative corporate leadership was forged during more than three decades at the absolute pinnacle of international banking, directing critical executive operations for premier financial institutions including Citibank, ABN AMRO, Emirates NBD and FirstRand banking group.</p>
+        <p>A master of cross-border fund structuring and high-stakes capital stewardship, he functioned as Senior Vice President (ME &amp; India) at Forsyth Partners a UK based Asset Management company with over 4.5 billion dollars under management and subsequently as Executive Director (ME and India) at FirstRand Banking group one of the top 100 banks in the world, where he masterminded a complex joint venture and initiated a specialized investment fund focused on the Indian economy. As Executive Director at Channel Capital Partners LLC &amp; thereafter as CEO and Chief Strategist of Clover Bank Investments, Jayessh solidified his reputation as a premier corporate rainmaker, spearheading private equity, capital-raising campaigns before deploying into sophisticated transactions that has generated high alpha.</p>
+        <p>His capacity for driving exponential corporate scale and operational transformation is demonstrated by his decisive governance as CEO &amp; Group Managing Director of Electrolux Commercial Services consistently optimizing operational efficiencies. During his professional tenure, he worked as an advisor to a few corporate boards and the Private Office of H.E. Sheikh Tariq Bin Khalid Al Qassimi.</p>
+        <p>He possesses a sound track record of guiding high-velocity ventures from initial concept to massive capital deployment. This mastery of global microeconomic strategy is mirrored by his presence as an international thought leader, delivering definitive insights on global M&amp;A opportunities and foreign investment dynamics at global forums including the World Finance &amp; United Exchange Summit and the Overseas Private Investor Forum in Liaoning China. He has also delivered India as an Investment destination at AUT in New Zealand, soliciting capital into the Indian markets.</p>
+        <p>Seamlessly integrating advanced data analytics with a human-centric philosophy that optimizes multi-tiered workforces, Jayessh delivers the rare synthesis of financial mastery, sharp deal-making acumen, and board-level dominance required to champion total fiscal and strategic governance for a large enterprise.</p>
+      </div>
+    </article>
+
+    <article class="leadership-profile" id="profile-dayakara" role="tabpanel" hidden>
+      <div class="leadership-identity">
+        <img class="leadership-portrait" src="images/leadership/placeholder.png" alt="(C.A) Dayakara Shetty" loading="eager">
+        <h3 class="leadership-name">(C.A) Dayakara Shetty</h3>
+        <p class="leadership-role">Chief Financial Officer</p>
+      </div>
+      <div class="leadership-bio">
+        <p>Dayakara Shetty is a seasoned professional in the field of financial administration, corporate governance and treasury. A Chartered Accountant with over 30 years of strategic financial leadership across the UAE and India, he bring extensive experience to the table. I have a proven track record of managing full-cycle financial operations for companies with revenues up to AED 150 million.</p>
+        <p>His expertise spans P&amp;L management, budgeting, and high-level MIS reporting to drive organizational performance. He specializes in commercial strategy, including complex project costing, revenue recognition, and tender management. He brings deep experience in corporate and trade finance, from project funding to LC and Bank Guarantee administration and has successfully led M&amp;A due diligence, corporate structural design, and multi-level group account consolidations. He is highly skilled in implementing robust ERP systems, such as Microsoft Dynamics Axapta and Oracle, to optimize efficiency. Throughout his career, he has effectively mentored and directed multi-disciplinary teams. His diverse industry background includes Facility Management, Oil &amp; Gas, Marine Engineering, and Manufacturing. He is dedicated to delivering high-impact financial governance and strategic growth to ensure sustainable business success.</p>
+      </div>
+    </article>
+
+    <article class="leadership-profile" id="profile-rachita" role="tabpanel" hidden>
+      <div class="leadership-identity">
+        <img class="leadership-portrait" src="images/leadership/rachita-bhat.png" alt="Rachita Bhat">
+        <h3 class="leadership-name">Rachita Bhat</h3>
+        <p class="leadership-role">Director</p>
+      </div>
+      <div class="leadership-bio">
+        <p>Rachita Bhat is a results-driven executive with over 18 years of experience leading high-impact business development and marketing initiatives across the hospitality, catering, IT, and aviation sectors. Throughout her distinguished career, she has maintained an exceptional client retention rate, proving her ability to cultivate long-term, high-value partnerships. Rachita is a strategic visionary who excels at conceptualizing market entry strategies and establishing scalable infrastructure for new business ventures.</p>
+        <p>An expert in multi-channel brand positioning, Rachita integrates tailor-made solutions and innovative event management to capture market share and elevate brand presence. Her leadership style combines technical savvy with a deep foundation in general management, allowing her to translate complex market trends into actionable growth strategies. She is highly adept at navigating administrative and operational complexities, ensuring that marketing efforts are perfectly aligned with business delivery models and regulatory requirements. Rachita excels at fostering strong relationships with key stakeholders and driving collaborative team performance. She demonstrates an unwavering commitment to organizational excellence and long-term profitability and remains dedicated to delivering innovative, client-centric solutions.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 <!-- ═══════ FOOTER ═══════ -->
 <footer class="footer" id="contact">
   <div class="footer-grid">
@@ -1818,6 +2088,19 @@ document.addEventListener('mousemove', (e) => {
   const y = e.clientY;
   document.body.style.setProperty('--mx', x + 'px');
   document.body.style.setProperty('--my', y + 'px');
+});
+
+// ─── MANAGEMENT TEAM TABS ───
+const leadershipTabs = document.querySelectorAll('.leadership-tab');
+const leadershipProfiles = document.querySelectorAll('.leadership-profile');
+leadershipTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const profileId = `profile-${tab.dataset.profile}`;
+    leadershipTabs.forEach(item => item.setAttribute('aria-selected', item === tab ? 'true' : 'false'));
+    leadershipProfiles.forEach(profile => {
+      profile.hidden = profile.id !== profileId;
+    });
+  });
 });
 </script>
 
