@@ -20,6 +20,9 @@ Desktop.ini
 *.swo
 *~
 
+.codebase-memory/
+.claude/
+
 # Local Development & Environment
 .env
 .env.local
